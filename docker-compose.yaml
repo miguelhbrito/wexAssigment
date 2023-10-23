@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app:
+    container_name: wex-api
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8090:8090"
+    networks:
+      - local-network
+    depends_on:
+      - postgresdb
+  postgresdb:
+    image: postgres:latest
+    container_name: postgresdb_container
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=asgard
+      - POSTGRES_USER=hel
+      - POSTGRES_PASSWORD=saymyname
+    networks:
+      - local-network
+networks:
+  local-network:
+    driver: bridge
