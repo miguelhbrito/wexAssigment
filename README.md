@@ -16,7 +16,6 @@ Start API wex:
 make config-up
 ```
 
-```
 To shutdown:
 ``` powershell
 make config-down
